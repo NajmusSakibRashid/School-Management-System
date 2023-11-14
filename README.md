@@ -94,7 +94,3 @@ The system follows a three-tier architecture:
 - **Database:** MySQL for data storage.
 
 This architecture ensures modularity and scalability.
-
----
-
-Feel free to adapt and expand this template based on your project's specific needs and details.
