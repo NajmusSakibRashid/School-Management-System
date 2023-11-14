@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Buffer</title>
+    <script>
+        async function f() {
+            var params = new URLSearchParams(window.location.search);
+            var response = await fetch('http://localhost:8000/LastInsertedId', { method: 'GET' });
+            var myjson = await response.json();
+            document.getElementById('response').innerHTML = 'Last updated student id is :' + myjson[0].x;
+            document.getElementById('role').value = params.get('role');
+            document.getElementById('id').value = params.get('id');
+        }
+    </script>
+    <style>
+        input[type=submit] {
+            padding: 15px;
+            width: 15%;
+            border-width: 0;
+            border-radius: 5px;
+            background-color: #4a5662;
+        }
+
+        input[type=submit]:hover {
+            background-color: #303642;
+        }
+
+        body {
+            background: #909eab url(https://wallpaperaccess.com/full/1616109.jpg);
+            font-family: Helvetica, sans-serif;
+            font-size: 18px;
+            line-height: 24px;
+        }
+    </style>
+</head>
+<body onload="f()" style="color:white">
+    <form action="/HomePage" style="text-align:center">
+        <input type="hidden" name="role" id="role" />
+        <input type="hidden" name="id" id="id" />
+        <div style="margin-top:200px" id="response"></div>
+        <input style="margin-top:10px;padding:20px;color:white" type="submit" value="Click To Proceed" />
+    </form>
+</body>
+</html>

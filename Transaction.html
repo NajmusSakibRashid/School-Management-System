@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Transaction</title>
+    <style>
+        td{
+            padding:5px
+        }
+        table {
+            border-radius: 5px;
+            background-color: #171e2e;
+            padding: 10px;
+            border-collapse:collapse;
+            margin-left:auto;
+            margin-right:auto;
+        }
+        input[type=text], input[type=date],input[type=number] {
+            width: 90%;
+            border-radius: 2px;
+            border-width: 0px;
+            background-color: #303642;
+            padding: 10px;
+            color: #f7fdfd;
+        }
+        ::placeholder {
+            color: #f7fdfd;
+        }
+        input[type=submit] {
+            padding: 15px;
+            width: 10%;
+            border-width: 0;
+            border-radius: 5px;
+            background-color: #4a5662;
+        }
+        body {
+            background: #909eab url(https://wallpaperaccess.com/full/1616109.jpg);
+            font-family: Helvetica, sans-serif;
+            font-size: 18px;
+            line-height: 24px;
+        }
+        input[type=submit]:hover {
+            background-color: #303642;
+        }
+    </style>
+</head>
+<body style="color: #f7fdfd">
+    <h1 style="text-align:center">Transaction</h1>
+    <div id="table"></div>
+    <form action="/TransactionResponse" method="post" id="transactionform">
+        <table>
+            <tr>
+                <td>
+                    <tag for="student_id">Student Id:</tag>
+                </td>
+                <td>
+                    <input type="number" name="student_id" placeholder="Enter Student Id" />
+                </td>
+            </tr>
+        </table>
+        <div style="text-align: center; padding-top: 30px"><input type="submit" style="color: #f7fdfd"/></div>
+    </form>
+</body>
+</html>
+<script>
+    async function f() {
+        var params = new URLSearchParams(window.location.search);
+        var response = await fetch('http://localhost:8000/GetDues?year='+params.get('year'));
+        var myjson = await response.json();
+        var table = '<table><tr>';
+        for (item in myjson[0])
+            table += '<th>' + item + '</th>';
+        table += '</tr>';
+        var sum=0;
+        for (let i = 0; i < myjson.length; i++) {
+            sum += myjson[i].amount;
+            table += '<tr>';
+            for (item in myjson[i])
+                table += '<td>' + myjson[i][item] + '</td>';
+            table += '</tr>';
+        }
+        table += '</table>';
+        table += '<center>Total due=' + sum + '</center>';
+        document.getElementById('table').innerHTML = table;
+        document.getElementById('transactionform').action += '?role=' + params.get('role') + '&id=' + params.get('id') + '&year=' + params.get('year') + '&amount=' + sum;
+    }
+    f();
+</script>

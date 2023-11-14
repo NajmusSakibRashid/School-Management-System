@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        async function f() {
+            var params = new URLSearchParams(window.location.search);
+            var section_id = await fetch('http://localhost:8000/GetSectionId?id=' + params.get('id'));
+            var section_id_json = await section_id.json(); 
+            var response = await fetch('http://localhost:8000/sectionid=' + section_id_json[0].id);
+            var myjson = await response.json();
+            var form = '<form action="/AttendanceResponse?role='+params.get('role')+'&id='+params.get('id');
+            form += '" method="post"><table style="margin-left: auto; margin-right:auto"><tr><th>Student Id</th><th>Name</th><th>Attendance</th></tr>';
+            for (let i = 0; i < myjson.length; i++) {
+                form += '<tr><td>' + myjson[i].id + '</td><td>' + myjson[i].name + '</td><td><input name="studentid" type="checkbox" value=' + myjson[i].id + '></td></tr>';
+            }
+            form += '</table>';
+            form += '<input type="submit"></form>';
+            document.getElementById('form').innerHTML = form;
+        }
+    </script>
+    <style>
+        body {
+            background: #909eab url(https://wallpaperaccess.com/full/1616109.jpg);
+            font-family: Helvetica, sans-serif;
+            font-size: 18px;
+            line-height: 24px;
+            color:white;
+        }
+        div {
+            margin-left:auto;
+            margin-right:auto;
+            border-radius: 5px;
+            padding: 10px;
+            width:30%;
+        }
+        input[type=text], input[type=date],input[type=number] {
+            width: 90%;
+            border-radius: 2px;
+            border-width: 0px;
+            background-color: #303642;
+            padding: 10px;
+            color: #f7fdfd;
+            margin:15px
+        }
+        input[type=submit],button {
+            padding: 15px;
+            border-width: 0;
+            border-radius: 5px;
+            background-color: #4a5662;
+            color: white;
+            margin:15px;
+            width:35%;
+        }
+        input[type=submit]:hover,button:hover {
+            background-color: #303642;
+        }
+        form{
+            margin:15px
+        }
+    </style>
+</head>
+<body onload="f()">
+    <div style="text-align:center" id="form"></div>
+</body>
+</html>

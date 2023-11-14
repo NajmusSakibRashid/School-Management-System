@@ -1,0 +1,56 @@
+﻿body {
+    background: #909eab url(https://wallpaperaccess.com/full/1616109.jpg);
+    font-family: Helvetica, sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    color:white;
+    text-align:center;
+}
+input[type=submit] {
+    margin:20px;
+    padding: 15px;
+    width: 20%;
+    border-width: 0;
+    border-radius: 5px;
+    background-color: #4a5662;
+    color:white;
+}
+input[type=submit]:hover {
+    background-color: #303642;
+}
+th {
+    background-color: #292931;
+}
+td,th{
+    padding:5px;
+}
+tr:nth-child(2n+1) {
+    background-color: #2b2b33;
+}
+tr:nth-child(2n) {
+    background-color: #2e2e38;
+}
+
+table{
+    width:80%;
+    text-align:center;
+    border-collapse:collapse;
+}
+
+input[type=text], input[type=date],input[type=number],input[type=password] {
+    width: 20%;
+    border-radius: 2px;
+    border-width: 0px;
+    background-color: #303642;
+    padding: 10px;
+    color: #f7fdfd;
+    margin-left:15px;
+}
+
+::placeholder{
+    color:white;
+}
+
+tr:hover{
+    background-color:coral;
+}

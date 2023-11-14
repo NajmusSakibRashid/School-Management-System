@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        async function f() {
+            var response = await fetch('http://localhost:8000/QueryResult');
+            var myjson = await response.json();
+            var output = '<table border="2px" style="margin-left:auto;margin-right:auto;width:65%;border-collapse:collapse"><tr>';
+            for (item in myjson[0])
+                output += '<th>' + item + '</th>';
+            output += '</tr>';
+            for (let i = 0; i < myjson.length; i++) {
+                output += '<tr>';
+                for (item in myjson[i])
+                    output += '<td>' + myjson[i][item] + '</td>';
+                output += '</tr>';
+            }
+            output += '</table>';
+            document.getElementById('queryresult').innerHTML = output;
+        }
+    </script>
+</head>
+<body onload="f()">
+    <div id="queryresult" style="text-align:center;margin-top:80px"></div>
+</body>
+</html>

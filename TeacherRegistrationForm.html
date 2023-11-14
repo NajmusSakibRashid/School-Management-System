@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Teacher Registration Form</title>
+    <style>
+        td {
+            padding-top: 5px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        table {
+            border-radius: 5px;
+            background-color: #171e2e;
+            padding: 10px;
+        }
+
+        input[type=text], input[type=date] {
+            width: 90%;
+            border-radius: 2px;
+            border-width: 0px;
+            background-color: #303642;
+            padding: 10px;
+            color: #f7fdfd;
+        }
+
+        ::placeholder {
+            color: #f7fdfd;
+        }
+
+        input[type=submit] {
+            padding: 15px;
+            width: 10%;
+            border-width: 0;
+            border-radius: 5px;
+            background-color: #4a5662;
+        }
+
+        body {
+            background: #909eab url(https://wallpaperaccess.com/full/1616109.jpg);
+            font-family: Helvetica, sans-serif;
+            font-size: 18px;
+            line-height: 24px;
+        }
+
+        input[type=submit]:hover {
+            background-color: #303642;
+        }
+    </style>
+</head>
+<body style="color: #f7fdfd">
+    <h1 style="text-align:center">Teacher Registration Form</h1>
+    <form action="/TeacherRegistrationResponse" method="post" id="form">
+        <table style="margin-left:auto;margin-right:auto;padding:20px">
+            <tr>
+                <td><tag for="name">Name:</tag></td>
+                <td><input placeholder="Enter Name" type="text" name="name" required /></td>
+            </tr>
+            <tr>
+                <td><tag for="gender">Gender:</tag></td>
+                <td>
+                    <input type="radio" name="gender" value="Male" required />Male
+                    <input type="radio" name="gender" value="Female" />Female
+                </td>
+            </tr>
+            <tr>
+                <td><tag for="dob">Date Of Birth:</tag></td>
+                <td><input type="date" name="dob" required /></td>
+            </tr>
+            <tr>
+                <td><tag for="subject">Subject:</tag></td>
+                <td><input placeholder="Enter Subject" type="text" name="subject" required /></td>
+            </tr>
+        </table>
+        <div style="text-align:center;padding-top:30px"><input style="color: #f7fdfd" type="submit" /></div>
+    </form>
+</body>
+</html>
+<script>
+    function f() {
+        var params = new URLSearchParams(window.location.search);
+        document.getElementById('form').action += '?role=' + params.get('role') + '&id=' + params.get('id');
+    }
+    f();
+</script>

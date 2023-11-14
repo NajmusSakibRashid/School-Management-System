@@ -1,0 +1,85 @@
+﻿<html>
+
+
+<head>
+    <meta charset="utf-8" />
+    <title>Home Page</title>
+
+    <link href="style.css" rel="stylesheet" />
+    <script>
+        function f() {
+            var params = new URLSearchParams(window.location.search);
+            var ref = document.getElementsByTagName('a');
+            for (let i = 0; i < ref.length; i++) {
+                ref[i].href += '?role=' + params.get('role');
+                ref[i].href += '&id=' + params.get('id');
+            }
+            if (params.get('role') == 'student') {
+                document.getElementById('s_routine').href = '/StudentAccessRoutine?role=' + params.get('role') + '&id=' + params.get('id');
+                //documnet.getElementById('s_result').href = '/StudentAccessResult?role=' + params.get('role') + '&id=' + params.get('id');
+                document.getElementById('s_result').href = '/StudentAccessResult?role=' + params.get('role') + '&id=' + params.get('id');
+            }
+            if (params.get('role') == 'teacher')
+                document.getElementById('t_routine').href = '/TeacherAccessRoutine?role=' + params.get('role') + '&id=' + params.get('id');
+            document.getElementById('logout').href = '/';
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <!--<li><a href="#">Home</a></li>-->
+            <li>
+                <a id="logout">Log Out</a>
+            </li>
+            <li>
+                <a>Report</a>
+                <ul>
+                    <li><a href="/AttendanceReport">Attendance</a></li>
+                    <li>
+                        <a>Routine</a>
+                        <ul>
+                            <li><a href="/StudentRoutine" id="s_routine">Student</a></li>
+                            <li><a href="/TeacherRoutine" id="t_routine">Teacher</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a>Result</a>
+                        <ul>
+                            <li><a href="/StudentResult" id="s_result">Student</a></li>
+                            <li><a href="/StatisticsResult">Statistics</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a>Functionality</a>
+                <ul>
+                    <li><a href="/Attendance">Attendance</a></li>
+                    <li><a href="/Routine">Routine</a></li>
+                    <li><a href="/Result">Result</a></li>
+                </ul>
+            </li>
+            <li>
+                <a>Forms</a>
+                <ul>
+                    <li><a href="/StudentAdmission">Student</a></li>
+                    <!--<li><a href="/LocationRegistration">Location</a></li>-->
+                    <li><a href="/TeacherRegistration">Teacher</a></li>
+                    <li><a href="/ExamRegistration">Exam</a></li>
+                    <li><a href="/Due">Due</a></li>
+                    <li><a href="/Transaction">Transaction</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/Query">Query</a>
+            </li>
+            <!--<li><a href="#">Inspiration</a></li>-->
+        </ul>
+    </nav>
+</body>
+
+</html>
+<script>
+    f();
+</script>

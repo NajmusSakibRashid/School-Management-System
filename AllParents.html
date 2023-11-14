@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>All Parents</title>
+    <script>
+        async function f() {
+            var response = await fetch('http://localhost:8000/AllParents');
+            var myjson = await response.json();
+            var table = '<h1 style="text-aligh:center">All Registered Parent</h1><table border=2 style="margin-left:auto;margin-right:auto"><tr><th>Id</th><th>Name</th><th>Gender</th><th>Date of Birth</th></tr>';
+            for (let i = 0; i < myjson.length; i++) {
+                table += '<tr><td>' + myjson[i].id + '</td><td>' + myjson[i].name + '</td><td>' + myjson[i].gender + '</td><td>' + myjson[i].date_of_birth.substring(0,10) + '</td></tr>';
+            }
+            table += '</table>';
+            document.getElementById('table').innerHTML = table;
+        }
+    </script>
+</head>
+<body onload="f()">
+    <div style="text-align:center;color:dimgray" id="table"></div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Parent Registration Form (Mother)</title>
+    <style>
+        td {
+            padding-top: 5px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        table {
+            border-radius: 5px;
+            background-color: #171e2e;
+            padding: 10px;
+        }
+
+        input[type=text], input[type=date], input[type=number], input[type=time], select {
+            width: 90%;
+            border-radius: 2px;
+            border-width: 0px;
+            background-color: #303642;
+            padding: 10px;
+            color: #f7fdfd;
+        }
+
+        select {
+            width: 100%;
+        }
+
+        ::placeholder {
+            color: #f7fdfd;
+        }
+
+        input[type=submit] {
+            padding: 15px;
+            width: 10%;
+            border-width: 0;
+            border-radius: 5px;
+            background-color: #4a5662;
+            color:white;
+        }
+
+        body {
+            background: #909eab url(https://wallpaperaccess.com/full/1616109.jpg);
+            font-family: Helvetica, sans-serif;
+            font-size: 18px;
+            line-height: 24px;
+        }
+
+        input[type=submit]:hover {
+            background-color: #303642;
+        }
+    </style>
+</head>
+<body style="color:white">
+    <h1 style="text-align:center">Mother Information</h1>
+    <form style="text-align:center" action="/SeeAllParents">
+        <input type="submit" value="See All Parent"/>
+    </form>
+    <h2 style="text-align:center">Has Registered Parent</h2>
+    <form action="/RegisteredParentResponseMother" method="post" id="form1">
+        <table style="margin-left:auto;margin-right:auto;padding:20px">
+            <tr>
+                <td><tag for="name">Parent Id:</tag></td>
+                <td><input placeholder="Enter Parent Id" type="text" name="parentid" required /></td>
+            </tr>
+        </table>
+        <div style="text-align: center; padding-top: 30px"><input type="submit" style="color: #f7fdfd" /></div>
+    </form>
+    <h2 style="text-align:center">Parent Registration Form</h2>
+    <form action="/ParentRegistrationResponseMother" method="post" id="form2">
+        <table style="margin-left:auto;margin-right:auto;padding:20px">
+            <tr>
+                <td><tag for="name">Name:</tag></td>
+                <td><input placeholder="Enter Name" type="text" name="name" required /></td>
+            </tr>
+            <tr>
+                <td><tag for="gender">Gender:</tag></td>
+                <td>
+                    <input type="radio" name="gender" value="Male" required />Male
+                    <input type="radio" name="gender" value="Female" />Female
+                </td>
+            </tr>
+            <tr>
+                <td><tag for="dob">Date Of Birth:</tag></td>
+                <td><input type="date" name="dob" required /></td>
+            </tr>
+        </table>
+        <div style="text-align: center; padding-top: 30px"><input type="submit" style="color: #f7fdfd" /></div>
+    </form>
+</body>
+</html>
+<script>
+    function f() {
+        var params = new URLSearchParams(window.location.search);
+        document.getElementById('form1').action += '?role=' + params.get('role') + '&id=' + params.get('id');
+        document.getElementById('form2').action += '?role=' + params.get('role') + '&id=' + params.get('id');
+    }
+    f();
+</script>
