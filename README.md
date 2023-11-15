@@ -62,7 +62,7 @@ The backend is developed using Node.js, and it includes APIs for various functio
         else
             res.send('you are not a class teacher');
     })
-})
+  })
   ```
 
 ### 4.3 Frontend (HTML, CSS, JS)
