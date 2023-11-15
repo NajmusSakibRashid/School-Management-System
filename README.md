@@ -72,8 +72,17 @@ The frontend is designed using HTML, CSS, and JavaScript to ensure a user-friend
 ## 5. Installation
 
 ### Step 1: 
-
 Clone the directory to your local machine
+### Step 2:
+Run the sql scripts in School Management System Database directory to create the database
+### Step 3:
+Run the following bash 
+  ```bash
+  npm i
+  node app.js
+  ```
+### Step 4:
+Open the localhost port in the browser showed in the command prompt
 
 ## 6. System Architecture
 
