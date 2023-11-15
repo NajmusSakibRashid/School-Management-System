@@ -40,22 +40,29 @@ The backend is developed using Node.js, and it includes APIs for various functio
 
 - **Student API:**
   ```javascript
-  // Example endpoint for retrieving student information
-  app.get('/api/students/:id', (req, res) => {
-    // Code to retrieve student information
-    // ...
-    res.json(studentData);
-  });
+  app.get('/StudentAdmission', function (req, res) {
+      params = url.parse(req.url, true).query;
+      if (params.role != 'admin')
+          res.send('unauthorized');
+      else
+          res.sendFile(__dirname + '/' + 'StudentAdmitForm.html');
+  })
   ```
 
 - **Attendance API:**
   ```javascript
-  // Example endpoint for recording attendance
-  app.post('/api/attendance', (req, res) => {
-    // Code to record attendance
-    // ...
-    res.json({ success: true });
-  });
+  app.get('/Attendance', function (req, res) {
+      params = url.parse(req.url, true).query;
+      if (params.role != 'teacher') 
+          return res.send('unauthorized');
+      var sql = 'select * from section where class_teacher=' + params.id;
+      connection.query(sql, function (err, result) {
+          if (result.length)
+              res.sendFile(__dirname + '/' + 'Attendance.html');
+          else
+              res.send('you are not a class teacher');
+      })
+  })
   ```
 
 ### 4.3 Frontend (HTML, CSS, JS)
