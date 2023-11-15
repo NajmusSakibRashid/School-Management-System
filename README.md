@@ -69,37 +69,11 @@ The backend is developed using Node.js, and it includes APIs for various functio
 
 The frontend is designed using HTML, CSS, and JavaScript to ensure a user-friendly interface.
 
-## 5. Code Documentation
+## 5. Installation
 
-Code is documented using standard conventions. For example:
+### Step 1: 
 
-- **Backend Code:**
-  ```javascript
-  async function f() {
-            var params = new URLSearchParams(window.location.search);
-            var section_id = await fetch('http://localhost:8000/GetSectionId?id=' + params.get('id'));
-            var section_id_json = await section_id.json(); 
-            var response = await fetch('http://localhost:8000/sectionid=' + section_id_json[0].id);
-            var myjson = await response.json();
-            var form = '<form action="/AttendanceResponse?role='+params.get('role')+'&id='+params.get('id');
-            form += '" method="post"><table style="margin-left: auto; margin-right:auto"><tr><th>Student Id</th><th>Name</th><th>Attendance</th></tr>';
-            for (let i = 0; i < myjson.length; i++) {
-                form += '<tr><td>' + myjson[i].id + '</td><td>' + myjson[i].name + '</td><td><input name="studentid" type="checkbox" value=' + myjson[i].id + '></td></tr>';
-            }
-            form += '</table>';
-            form += '<input type="submit"></form>';
-            document.getElementById('form').innerHTML = form;
-        }
-  ```
-
-- **Frontend Code:**
-  ```javascript
-  function f() {
-        var params = new URLSearchParams(window.location.search);
-        document.getElementById('form').action += '?role=' + params.get('role') + '&id=' + params.get('id');
-    }
-    f();
-  ```
+Clone the directory to your local machine
 
 ## 6. System Architecture
 
