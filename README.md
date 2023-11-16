@@ -74,7 +74,13 @@ The frontend is designed using HTML, CSS, and JavaScript to ensure a user-friend
 ### Step 1: 
 Clone the directory to your local machine
 ### Step 2:
-Run the sql scripts in School Management System Database directory to create the database
+Create a new database in mysql and run the sql scripts in School Management System Database directory to populate the database
+### Step 2.1:
+Create a .env file enter password and name of the database in the following format
+  ```ini
+  DATABASE_PASSWORD="buetcse8881"
+  DATABASE="school_management_system"
+  ```
 ### Step 3:
 Run the following bash 
   ```bash
