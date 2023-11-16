@@ -78,8 +78,8 @@ Create a new database in mysql and run the sql scripts in School Management Syst
 ### Step 2.1:
 Create a .env file enter password and name of the database in the following format
   ```ini
-  DATABASE_PASSWORD="buetcse8881"
-  DATABASE="school_management_system"
+  DATABASE_PASSWORD=database password here
+  DATABASE=database name here
   ```
 ### Step 3:
 Run the following bash 
