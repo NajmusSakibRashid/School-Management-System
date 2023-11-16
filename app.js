@@ -16,11 +16,13 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(router);
 
+require('dotenv').config();
+
 var connection = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "buetcse8881",
-    database: "school_management_system"
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE
 })
 
 var sql = 'select id from section';
